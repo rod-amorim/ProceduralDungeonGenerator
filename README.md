@@ -1,5 +1,7 @@
 # ProceduralDungeonGeneratorGodot
 
+*Feel free to take, modify, or even create a complete game with this. Long live open source! \o/*
+
 This project aims to implement a procedural dungeon generation algorithm using the Godot 4 game engine.
 
 I used this project as a means to study both procedural dungeon generation and to learn (a bit) about using Godot because up until now, the only engine I've used is Unity (with around 6 years of experience), and I want to expand my skills.
