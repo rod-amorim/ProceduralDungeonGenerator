@@ -1,3 +1,11 @@
 res://default_bus_layout.tres
 res://Scripts/DungeonGenerator/DungeonGenerator.gd
 res://Scripts/Enum/GridMapTileTypeEnum.gd
+res://Scenes/World/Main_Scene.tscn
+res://MeshLib/DungeonTiles.tres
+res://Shaders/PixalatedShader.gdshader
+res://Scenes/Player/player.tscn
+res://Scenes/MapGenerator/dungeon_generator.tscn
+res://Scenes/UI/gameplay_ui.tscn
+res://Scenes/UI/options_menu.tscn
+res://Scenes/GameManager/game_manager.tscn
