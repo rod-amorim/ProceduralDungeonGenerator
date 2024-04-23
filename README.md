@@ -10,13 +10,15 @@ The game is quite simple; it doesn't feature enemies, weapons, or collectibles. 
 
 Like any normal human being, I followed a tutorial to create this project. I'll leave the link here in case anyone wants to check it out, and I highly recommend watching it. My hope is that you'll understand how this works, and I believe consuming as much information as possible can help.
 
-#### Tutorials used for the creation and understanding of this project:
+# Tutorials used for the creation and understanding of this project:
 
-##### Tutorial explaining the basics of what was done here, but in a 3D version with rooms of different height levels and stairs between them though he initially explains the algorithm in 2D (this guy deserves more subscribers):
+## Tutorial explaining the basics of what was done here, but in a 3D version with rooms of different height levels and stairs between them though he initially explains the algorithm in 2D (this guy deserves more subscribers):
 https://www.youtube.com/watch?v=rBY2Dzej03A
 
-##### Tutorial that I followed to understand how all this works (this guy also deserves more subscribers):
+## Tutorial that I followed to understand how all this works (this guy also deserves more subscribers):
 https://www.youtube.com/watch?v=h64U6j_sFgs
+
+# The procedural dungeon
 
 ## How does the dungeon generation work?
 
