@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctk64bg5dulbb"]
+
+[ext_resource type="FontFile" uid="uid://cinbkyk80vahh" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="1_41kgw"]
+
+[node name="OptionDisplayButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HboxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="HboxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_41kgw")
+theme_override_font_sizes/font_size = 32
+text = "BASE_LABEL
+"
+
+[node name="OptionButton" type="OptionButton" parent="HboxContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2

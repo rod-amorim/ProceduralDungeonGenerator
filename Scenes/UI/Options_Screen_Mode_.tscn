@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt8f4wpmtlc4"]
+
+[ext_resource type="PackedScene" uid="uid://ctk64bg5dulbb" path="res://Scenes/UI/BaseScenes/Options_Display_Button.tscn" id="1_biemr"]
+[ext_resource type="Script" path="res://Scripts/Ui/options_screen_mode.gd" id="2_ciebe"]
+
+[node name="ScreenMode" instance=ExtResource("1_biemr")]
+script = ExtResource("2_ciebe")
+
+[node name="Label" parent="HboxContainer" index="0"]
+text = "Full Screen Mode"

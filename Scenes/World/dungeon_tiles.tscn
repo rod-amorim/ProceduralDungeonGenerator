@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqa6hjs2rf5rl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m74n6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bc8nv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wovuh"]
+albedo_color = Color(0.152941, 0, 0.972549, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8meps"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3cr8"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyt3l"]
+albedo_color = Color(0.580392, 0.301961, 0.32549, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxmdl"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i24t1"]
+albedo_color = Color(0, 1, 0, 1)
+
+[node name="DungeonTiles" type="Node3D"]
+
+[node name="RoomTile" type="MeshInstance3D" parent="."]
+layers = 4
+material_override = SubResource("StandardMaterial3D_m74n6")
+mesh = SubResource("BoxMesh_bc8nv")
+
+[node name="HallwayTile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+layers = 2
+mesh = SubResource("BoxMesh_bc8nv")
+surface_material_override/0 = SubResource("StandardMaterial3D_wovuh")
+
+[node name="DoorTile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+layers = 2
+mesh = SubResource("BoxMesh_bc8nv")
+surface_material_override/0 = SubResource("StandardMaterial3D_8meps")
+
+[node name="BorderTile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_bc8nv")
+surface_material_override/0 = SubResource("StandardMaterial3D_a3cr8")
+
+[node name="HeavyAtarTile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+layers = 2
+mesh = SubResource("BoxMesh_bc8nv")
+surface_material_override/0 = SubResource("StandardMaterial3D_gyt3l")
+
+[node name="ExitPoint" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+layers = 2
+mesh = SubResource("BoxMesh_bc8nv")
+surface_material_override/0 = SubResource("StandardMaterial3D_gxmdl")
+
+[node name="EntryPoint" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_bc8nv")
+surface_material_override/0 = SubResource("StandardMaterial3D_i24t1")

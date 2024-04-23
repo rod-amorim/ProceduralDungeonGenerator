@@ -1,0 +1,15 @@
+TileMap
+CanvasLayer
+ColorRect
+Control
+AudioStreamPlayer
+AudioStreamPlayer3D
+Node
+HBoxContainer
+CheckBox
+Label
+HSlider
+Sprite2D
+Panel
+PlayerPausedState
+State

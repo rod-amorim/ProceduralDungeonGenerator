@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cidphxpme3f0u"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager/GameStateMachine/GameStateMachine.gd" id="1_i23kp"]
+[ext_resource type="Script" path="res://Scripts/GameManager/GameStateMachine/States/InOptionsMenu.gd" id="3_8ly8x"]
+[ext_resource type="Script" path="res://Scripts/GameManager/GameStateMachine/States/GamePlayState.gd" id="3_rtmpr"]
+[ext_resource type="Script" path="res://Scripts/GameManager/PlayerPrefsLoadOnStart.gd" id="4_5rtln"]
+
+[node name="GameManager" type="Node"]
+
+[node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_i23kp")
+initial_state = NodePath("Gameplay")
+
+[node name="Gameplay" type="Node" parent="GameStateMachine"]
+script = ExtResource("3_rtmpr")
+
+[node name="InOptionsMenu" type="Node" parent="GameStateMachine"]
+script = ExtResource("3_8ly8x")
+
+[node name="PlayerPrefsLoadOnStart" type="Node" parent="."]
+script = ExtResource("4_5rtln")

@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://f6gyknfojoir"]
+
+[ext_resource type="FontFile" uid="uid://cinbkyk80vahh" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="1_g5ii5"]
+[ext_resource type="Script" path="res://Scripts/Ui/SetSliderLabel.gd" id="2_idxos"]
+
+[node name="OptionDisplayButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HboxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="HboxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_g5ii5")
+theme_override_font_sizes/font_size = 32
+text = "BASE_LABEL
+"
+
+[node name="HSlider" type="HSlider" parent="HboxContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+
+[node name="SliderValue" type="Label" parent="HboxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_g5ii5")
+theme_override_font_sizes/font_size = 26
+text = "100%
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("2_idxos")
+
+[connection signal="changed" from="HboxContainer/HSlider" to="HboxContainer/SliderValue" method="_on_h_slider_changed"]
+[connection signal="value_changed" from="HboxContainer/HSlider" to="HboxContainer/SliderValue" method="_on_h_slider_value_changed"]

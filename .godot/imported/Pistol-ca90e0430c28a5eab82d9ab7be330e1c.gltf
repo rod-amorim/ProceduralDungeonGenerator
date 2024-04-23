@@ -1,0 +1,214 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.8.19",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0,
+                1
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "extras" : {
+                "MaxHandle" : 13
+            },
+            "mesh" : 0,
+            "name" : "gunbody"
+        },
+        {
+            "extras" : {
+                "MaxHandle" : 12
+            },
+            "mesh" : 1,
+            "name" : "slidetrigger"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Pistol",
+            "pbrMetallicRoughness" : {
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.09948772192001343
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Mesh.001",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TANGENT" : 2,
+                        "TEXCOORD_0" : 3
+                    },
+                    "indices" : 4,
+                    "material" : 0
+                }
+            ]
+        },
+        {
+            "name" : "Mesh",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 5,
+                        "NORMAL" : 6,
+                        "TANGENT" : 7,
+                        "TEXCOORD_0" : 8
+                    },
+                    "indices" : 9,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 2398,
+            "max" : [
+                0.01660442352294922,
+                0.09407253563404083,
+                0.1650555580854416
+            ],
+            "min" : [
+                -0.016604386270046234,
+                -0.10946650803089142,
+                -0.1650555282831192
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 2398,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 2398,
+            "type" : "VEC4"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5126,
+            "count" : 2398,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5123,
+            "count" : 6732,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 884,
+            "max" : [
+                0.013702834025025368,
+                0.1026247963309288,
+                0.16406139731407166
+            ],
+            "min" : [
+                -0.01367477048188448,
+                0.059434887021780014,
+                -0.12303470075130463
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5126,
+            "count" : 884,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5126,
+            "count" : 884,
+            "type" : "VEC4"
+        },
+        {
+            "bufferView" : 8,
+            "componentType" : 5126,
+            "count" : 884,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 9,
+            "componentType" : 5123,
+            "count" : 2439,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 28776,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 28776,
+            "byteOffset" : 28776
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 38368,
+            "byteOffset" : 57552
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 19184,
+            "byteOffset" : 95920
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 13464,
+            "byteOffset" : 115104
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 10608,
+            "byteOffset" : 128568
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 10608,
+            "byteOffset" : 139176
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 14144,
+            "byteOffset" : 149784
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 7072,
+            "byteOffset" : 163928
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 4878,
+            "byteOffset" : 171000
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 175880,
+            "uri" : "Pistol-ca90e0430c28a5eab82d9ab7be330e1c.bin"
+        }
+    ]
+}

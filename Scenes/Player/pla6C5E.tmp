@@ -1,0 +1,117 @@
+[gd_scene load_steps=13 format=3 uid="uid://bqedp3spnxdiv"]
+
+[ext_resource type="Script" path="res://Scripts/Player/MouseLook.gd" id="1_jfr8d"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerStateMachine/PlayerStateMachine.gd" id="1_mxigt"]
+[ext_resource type="Script" path="res://Scripts/Player/Interact/InteractRayCast.gd" id="2_lvioe"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="3_0i2vt"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerStateMachine/States/Player_Idle_State.gd" id="5_ij6b5"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerStateMachine/States/Player_Shoot_State.gd" id="6_h7b5i"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerStateMachine/States/Player_Change_Weapon_State.gd" id="7_fhqmi"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerData.gd" id="8_n37i0"]
+[ext_resource type="Script" path="res://Scripts/SmoothFollow.gd" id="9_catbc"]
+[ext_resource type="Texture2D" uid="uid://bdpcvnpsgf866" path="res://Assets/kenney-prototype-textures-db6622fbe90621eed70a0b417ae8d97281f45e6c/addons/kenney_prototype_textures/light/texture_01.png" id="10_6etc5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nwbph"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e3kp5"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="Head" type="Node3D" parent="." node_paths=PackedStringArray("playerCamera", "characterBody3d")]
+script = ExtResource("1_jfr8d")
+playerCamera = NodePath("../ViewCamera/CameraView")
+characterBody3d = NodePath("..")
+MIN_VERTICAL_VIEW_ANGLE = -90
+MAX_VERTICAL_VIEW_ANGLE = 90
+
+[node name="Marker3D" type="Marker3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="InteractRayCast" type="RayCast3D" parent="Head/Marker3D"]
+target_position = Vector3(0, 0, -2)
+script = ExtResource("2_lvioe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_nwbph")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("ConvexPolygonShape3D_e3kp5")
+
+[node name="PlayerData" type="Node" parent="."]
+script = ExtResource("8_n37i0")
+
+[node name="PlayerMovement" type="Node" parent="." node_paths=PackedStringArray("characterBody3d")]
+script = ExtResource("3_0i2vt")
+characterBody3d = NodePath("..")
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character_body_3d")]
+script = ExtResource("1_mxigt")
+initial_state = NodePath("PlayerIdle")
+character_body_3d = NodePath("..")
+
+[node name="PlayerIdle" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("5_ij6b5")
+
+[node name="PlayerChangeWeapon" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_fhqmi")
+
+[node name="PlayerShootState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("6_h7b5i")
+
+[node name="WeaponContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Viewport" type="SubViewport" parent="WeaponContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="WeaponCamera" type="Camera3D" parent="WeaponContainer/Viewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+cull_mask = 2
+script = ExtResource("9_catbc")
+follow_target = NodePath("../../../Head/Marker3D")
+
+[node name="ViewCamera" type="Node3D" parent="."]
+script = ExtResource("9_catbc")
+follow_target = NodePath("../Head/Marker3D")
+
+[node name="CameraView" type="Camera3D" parent="ViewCamera"]
+cull_mask = 1048573
+
+[node name="Weapons" type="Node3D" parent="ViewCamera"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.2, 0)
+light_color = Color(1, 1, 0, 1)
+light_bake_mode = 0
+shadow_enabled = true
+shadow_opacity = 0.8
+shadow_blur = 3.0
+omni_range = 10.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 7.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_6etc5")
+expand_mode = 1

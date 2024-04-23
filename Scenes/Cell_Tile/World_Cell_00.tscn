@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://dovjakjanc4bf"]
+
+[ext_resource type="PackedScene" uid="uid://buvgjmybf4m7y" path="res://Scenes/Cell_Tile/Tiles/Ground_00.tscn" id="1_et0ur"]
+[ext_resource type="PackedScene" uid="uid://ds8qxgtnd7xvf" path="res://Scenes/Cell_Tile/Tiles/Wall_00.tscn" id="1_ji7r5"]
+[ext_resource type="Script" path="res://Scripts/DungeonGenerator/WorldCell.gd" id="1_up7vy"]
+[ext_resource type="PackedScene" uid="uid://bgi4d1kn8vbs" path="res://Scenes/Cell_Tile/Tiles/Ceiling_00.tscn" id="2_ntu07"]
+[ext_resource type="PackedScene" uid="uid://dm3d5f6hpt0jl" path="res://Scenes/Cell_Tile/Tiles/Door_00.tscn" id="4_e7hge"]
+
+[node name="World_cell_00" type="Node3D" node_paths=PackedStringArray("TopFace", "BottomFace", "LeftFace", "RightFace", "ForwardFace", "BackFace", "LeftDoorFace", "RightDoorFace", "ForwardDoorFace", "BackDoorFace")]
+script = ExtResource("1_up7vy")
+TopFace = NodePath("Ceiling_00")
+BottomFace = NodePath("Ground_00")
+LeftFace = NodePath("Wall_00_Left")
+RightFace = NodePath("Wall_00_Right")
+ForwardFace = NodePath("Wall_00_Front")
+BackFace = NodePath("Wall_00_Back")
+LeftDoorFace = NodePath("Door_00_Left")
+RightDoorFace = NodePath("Door_00_Right")
+ForwardDoorFace = NodePath("Door_00_Front")
+BackDoorFace = NodePath("Door_00_Back")
+
+[node name="Ground_00" parent="." instance=ExtResource("1_et0ur")]
+
+[node name="Ceiling_00" parent="." instance=ExtResource("2_ntu07")]
+
+[node name="Wall_00_Front" parent="." instance=ExtResource("1_ji7r5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Wall_00_Back" parent="." instance=ExtResource("1_ji7r5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1)
+
+[node name="Wall_00_Left" parent="." instance=ExtResource("1_ji7r5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 0)
+
+[node name="Wall_00_Right" parent="." instance=ExtResource("1_ji7r5")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1, 0, 0)
+
+[node name="Door_00_Front" parent="." instance=ExtResource("4_e7hge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.05)
+
+[node name="Door_00_Left" parent="." instance=ExtResource("4_e7hge")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.05, 0, -4.37114e-08)
+
+[node name="Door_00_Right" parent="." instance=ExtResource("4_e7hge")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -2.05, 0, 1.31134e-07)
+
+[node name="Door_00_Back" parent="." instance=ExtResource("4_e7hge")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8.74228e-08, 0, -2.05)

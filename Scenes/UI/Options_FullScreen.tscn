@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxnhf4c0b66hf"]
+
+[ext_resource type="PackedScene" uid="uid://d2yvn5gjmhxp2" path="res://Scenes/UI/BaseScenes/Checkbox_Display_Button.tscn" id="1_42s3c"]
+[ext_resource type="Script" path="res://Scripts/Ui/options_fullscreen.gd" id="2_lij6y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62jxh"]
+
+[node name="FullScreen" instance=ExtResource("1_42s3c")]
+script = ExtResource("2_lij6y")
+
+[node name="Label" parent="HboxContainer" index="0"]
+text = "FullScreen
+"
+
+[node name="CheckBox" parent="HboxContainer" index="1"]
+size_flags_horizontal = 2
+theme_override_constants/check_v_offset = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_62jxh")
+icon_alignment = 1
+expand_icon = true

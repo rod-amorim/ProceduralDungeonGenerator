@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bmd6md2iyovyj"]
+
+[node name="FadeInOutScreenLayer" type="CanvasLayer"]
+layer = 10
+
+[node name="FadeInOutScreenControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+
+[node name="FadeInOutScreen" type="ColorRect" parent="FadeInOutScreenControl"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+color = Color(0, 0, 0, 0)

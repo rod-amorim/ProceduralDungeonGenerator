@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn3gqhqrkfueo"]
+
+[ext_resource type="FontFile" uid="uid://cinbkyk80vahh" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="1_jun4s"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="GameplayUi" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameplayUi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_jun4s")
+theme_override_font_sizes/font_size = 66
+text = "message
+[Text]"
+horizontal_alignment = 1
+vertical_alignment = 1

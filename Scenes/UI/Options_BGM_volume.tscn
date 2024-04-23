@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c12weqeeqw0en"]
+
+[ext_resource type="PackedScene" uid="uid://f6gyknfojoir" path="res://Scenes/UI/BaseScenes/Slider_Display_Button.tscn" id="1_7rqnm"]
+[ext_resource type="Script" path="res://Scripts/Ui/options_volume_bus.gd" id="2_6c6sw"]
+
+[node name="Options_BGMVolume" instance=ExtResource("1_7rqnm")]
+script = ExtResource("2_6c6sw")
+busId = 1
+
+[node name="Label" parent="HboxContainer" index="0"]
+text = "BGM Volume
+"
+
+[node name="SliderValue" parent="HboxContainer" index="2"]
+isPercentage = true

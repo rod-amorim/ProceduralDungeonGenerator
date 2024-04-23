@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpqlgxabfet3a"]
+
+[ext_resource type="PackedScene" uid="uid://cq6hipdg2m7yh" path="res://Scenes/Cell_Tile/Tiles/Ground_Entry.tscn" id="2_hi0km"]
+[ext_resource type="PackedScene" uid="uid://bgi4d1kn8vbs" path="res://Scenes/Cell_Tile/Tiles/Ceiling_00.tscn" id="3_kfu5k"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerStartPos.gd" id="3_om71s"]
+
+[node name="Entry_Cell_00" type="Node3D"]
+
+[node name="Ground_Entry" parent="." instance=ExtResource("2_hi0km")]
+
+[node name="Ceiling_00" parent="." instance=ExtResource("3_kfu5k")]
+
+[node name="PlayerStartPos" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -2)
+script = ExtResource("3_om71s")

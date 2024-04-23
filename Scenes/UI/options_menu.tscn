@@ -1,0 +1,149 @@
+[gd_scene load_steps=8 format=3 uid="uid://bulbf57him1fb"]
+
+[ext_resource type="PackedScene" uid="uid://bxnhf4c0b66hf" path="res://Scenes/UI/Options_FullScreen.tscn" id="1_11jq1"]
+[ext_resource type="Script" path="res://Scripts/Ui/OptionsTabSaver.gd" id="1_mwqlf"]
+[ext_resource type="PackedScene" uid="uid://b8m3j5nd54l0f" path="res://Scenes/UI/Options_pixalation.tscn" id="2_8sg13"]
+[ext_resource type="PackedScene" uid="uid://bferbc2tuqajq" path="res://Scenes/UI/Options_Mouse_Sensibility.tscn" id="3_3il5k"]
+[ext_resource type="PackedScene" uid="uid://cblm7omkb2iqp" path="res://Scenes/UI/Options_master_volume.tscn" id="5_eiyxi"]
+[ext_resource type="PackedScene" uid="uid://c12weqeeqw0en" path="res://Scenes/UI/Options_BGM_volume.tscn" id="6_jl7ef"]
+[ext_resource type="PackedScene" uid="uid://dd0id16c6swu5" path="res://Scenes/UI/Options_SFX_volume.tscn" id="7_56t5y"]
+
+[node name="OptionsMenu" type="Control"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+tab_alignment = 1
+script = ExtResource("1_mwqlf")
+
+[node name="Grapichs" type="TabBar" parent="CanvasLayer/MarginContainer/TabContainer"]
+layout_mode = 2
+tab_alignment = 1
+scrolling_enabled = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer/TabContainer/Grapichs"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/TabContainer/Grapichs/MarginContainer2"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="FullScreen" parent="CanvasLayer/MarginContainer/TabContainer/Grapichs/MarginContainer2/VBoxContainer" instance=ExtResource("1_11jq1")]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Pixelation" parent="CanvasLayer/MarginContainer/TabContainer/Grapichs/MarginContainer2/VBoxContainer" instance=ExtResource("2_8sg13")]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Input" type="TabBar" parent="CanvasLayer/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+tab_alignment = 1
+scrolling_enabled = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer/TabContainer/Input"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/TabContainer/Input/MarginContainer2"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="MouseSensitivity_slider" parent="CanvasLayer/MarginContainer/TabContainer/Input/MarginContainer2/VBoxContainer" instance=ExtResource("3_3il5k")]
+layout_mode = 2
+
+[node name="Sound" type="TabBar" parent="CanvasLayer/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+tab_alignment = 1
+scrolling_enabled = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer/TabContainer/Sound"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/TabContainer/Sound/MarginContainer2"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Options_MasterVolume" parent="CanvasLayer/MarginContainer/TabContainer/Sound/MarginContainer2/VBoxContainer" instance=ExtResource("5_eiyxi")]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+playerPrefsPropertyName = "masterVolume"
+
+[node name="Options_BGMVolume" parent="CanvasLayer/MarginContainer/TabContainer/Sound/MarginContainer2/VBoxContainer" instance=ExtResource("6_jl7ef")]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+playerPrefsPropertyName = "BGMVolume"
+
+[node name="Options_SFXVolume" parent="CanvasLayer/MarginContainer/TabContainer/Sound/MarginContainer2/VBoxContainer" instance=ExtResource("7_56t5y")]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+busId = 2
+playerPrefsPropertyName = "SFXVolume"
+
+[connection signal="tab_changed" from="CanvasLayer/MarginContainer/TabContainer" to="CanvasLayer/MarginContainer/TabContainer" method="_on_tab_changed"]

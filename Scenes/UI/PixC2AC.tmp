@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8m3j5nd54l0f"]
+
+[ext_resource type="PackedScene" uid="uid://f6gyknfojoir" path="res://Scenes/UI/BaseScenes/Slider_Display_Button.tscn" id="1_l00yf"]
+[ext_resource type="Script" path="res://Scripts/Ui/options_pixalation.gd" id="2_omk2b"]
+
+[node name="PixalationDisplay_slider" instance=ExtResource("1_l00yf")]
+script = ExtResource("2_omk2b")
+
+[node name="Label" parent="HboxContainer" index="0"]
+text = "Pixelation
+"
+
+[node name="HSlider" parent="HboxContainer" index="1"]
+step = 10.0
+
+[node name="SliderValue" parent="HboxContainer" index="2"]
+isPercentage = true
