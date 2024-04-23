@@ -4,8 +4,7 @@ This project aims to implement a procedural dungeon generation algorithm using t
 
 I used this project as a means to study both procedural dungeon generation and to learn (a bit) about using Godot because up until now, the only engine I've used is Unity (with around 6 years of experience), and I want to expand my skills.
 
-#You can play the final game here 
-https://nilsera.itch.io/proceduraldungeongeneratorgodot4
+# Play the final game here -> https://nilsera.itch.io/proceduraldungeongeneratorgodot4
 
 The game is quite simple; it doesn't feature enemies, weapons, or collectibles. It's simply an endless sequence of dungeons floors generated for you to explore. It's literally a study project.
 
