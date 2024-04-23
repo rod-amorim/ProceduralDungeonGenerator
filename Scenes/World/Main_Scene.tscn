@@ -429,6 +429,7 @@ shape = SubResource("BoxShape3D_hrwcc")
 [node name="Ground_00" parent="StartRoom/Exit_Cell_01" instance=ExtResource("3_n1w1c")]
 
 [node name="DungeonGenerator" parent="." instance=ExtResource("8_jevqm")]
+currentSeed = null
 
 [node name="Shader" type="CanvasLayer" parent="."]
 

@@ -20,6 +20,7 @@ class_name DungeonGenerator
 @export var maxGenerateRoomOverlapRetryes: int = 15;
 @export_range(0, 1) var mstSurvivalChange: float = .25
 @export_multiline var customSeed: String = "": set = setSeed
+@export_multiline var currentSeed: String
 
 func setSeed(val: String) -> void:
 	customSeed = val
@@ -28,6 +29,11 @@ func setSeed(val: String) -> void:
 var roomList: Array[Room] = []
 
 func SetStart(_val: bool):
+	if customSeed == "":
+		var sys_time =  Time.get_unix_time_from_system()
+		seed(str(sys_time).hash())
+		currentSeed = str(sys_time)
+
 	StartMapGeneration()
 
 func SetClear(_val: bool):
@@ -162,7 +168,7 @@ func generateConnectionsAndHallways():
 	createHallways(mst_graph)
 	SetStartEndTiles(mst_graph)
 
-	minimap.DrawMinimap(gridMap,borderSize)
+	minimap.DrawMinimap(gridMap, borderSize)
 	minimapCover.Reset(borderSize)
 
 	if generateMesh:
@@ -256,12 +262,17 @@ func createHallways(mstGraph: AStar2D):
 				# get the cell with shortest distance to the connected room center point
 				# compares all the distances between all the cells in the current room to the center of the connected room and get the closest one
 				var tileFrom: RoomTile = roomFrom.roomTileList[1]
-				for tile in roomFrom.GetEdgeTiles(gridMap):
+				for tile in roomFrom.GetTilesThatCanBeDoors(gridMap):
 					var connectedRoomCenterPos: Vector3 = roomList[pointConnectionId].centerPos
 					
 					var distanceShorter = tile.pos.distance_squared_to(connectedRoomCenterPos) < tileFrom.pos.distance_squared_to(connectedRoomCenterPos)
 					if distanceShorter:
 						tileFrom = tile
+
+				#Try to get a door tile in one of the for sides of the chosen one, if find use it instead of creating a new door tile
+				var doorInAdjacentTilesFrom = roomFrom.GetDoorInAdjacentTiles(gridMap, tileFrom)
+				if doorInAdjacentTilesFrom:
+					tileFrom = doorInAdjacentTilesFrom
 
 				# get the room to cell, this is the other room connected to the "from room"			
 				var roomTo: Room = roomList[pointConnectionId]
@@ -269,11 +280,16 @@ func createHallways(mstGraph: AStar2D):
 				#get the cell from the other connected room with the shortes distance to the current room center point
 				# compares all the distances between all the cells in the other connected room to the center of the current room and get the closest one
 				var tileTo: RoomTile = roomTo.roomTileList[1]
-				for tile in roomTo.GetEdgeTiles(gridMap):
+				for tile in roomTo.GetTilesThatCanBeDoors(gridMap):
 					var currentRoomCenterPos: Vector3 = roomList[pointId].centerPos
 					var distanceShorter = tile.pos.distance_squared_to(currentRoomCenterPos) < tileTo.pos.distance_squared_to(currentRoomCenterPos)
 					if distanceShorter:
 						tileTo = tile
+
+				#Try to get a door tile in one of the for sides of the chosen one, if find use it instead of creating a new door tile
+				var doorInAdjacentTilesTo = roomTo.GetDoorInAdjacentTiles(gridMap, tileTo)
+				if doorInAdjacentTilesTo:
+					tileTo = doorInAdjacentTilesTo
 
 				#create a vector 3 array that will contain the door tile from current room in index 0 and the other door tile in the index 1
 				var hallway: PackedVector3Array = [tileFrom.pos, tileTo.pos]
@@ -300,7 +316,7 @@ func createHallways(mstGraph: AStar2D):
 
 	#set room margins
 	for tile in gridMap.get_used_cells_by_item(4):
-		astar.set_point_weight_scale(Vector2i(tile.x, tile.z), 2)
+		astar.set_point_weight_scale(Vector2i(tile.x, tile.z), 1000)
 
 	#Execute the AStart to all the points in the list of connected door tiles to get the hallways
 	for doorConnectionSet in fromToTilesPoints:

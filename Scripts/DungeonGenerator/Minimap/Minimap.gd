@@ -4,10 +4,12 @@ extends TileMap
 class_name MiniMap
 
 func ClearMinimap(borderSize:int):
+	clear()
 	for x in borderSize:
 		for y in borderSize:
 			set_cell(0, Vector2i(x,y), 0, Vector2i(1, 1), 0)
 		pass
+	DrawMapBorder(borderSize)
 
 func DrawMinimap(gridMap: GridMap, borderSize:int):
 	ClearMinimap(borderSize)
@@ -35,8 +37,6 @@ func DrawRoomsAndHallways(gridMap: GridMap):
 		var tileType = gridMap.get_cell_item(grid)
 
 		var pos_2d = Vector2i(grid.x, grid.z)
-		if tileType == GridMapTileTypeEnum.BORDER_TILE:
-			set_cell(0, pos_2d, 0, Vector2i(2, 1), 0)
 		if tileType == GridMapTileTypeEnum.ROOM_TILE or tileType == GridMapTileTypeEnum.HALLWAY_TILE:
 			set_cell(0, pos_2d, 0, Vector2i(1, 0), 0)
 		if tileType == GridMapTileTypeEnum.ROOM_BORDER:
@@ -48,6 +48,12 @@ func DrawRoomsAndHallways(gridMap: GridMap):
 		if tileType == GridMapTileTypeEnum.EXIT_POINT:
 			set_cell(0, pos_2d, 0, Vector2i(0, 1), 0)
 
+func DrawMapBorder(borderSize: int):
+	for i in range( - 1, borderSize + 1):
+		set_cell(0, Vector2i(i, -1), 0, Vector2i(2, 1), 0)
+		set_cell(0, Vector2i(i, borderSize), 0, Vector2i(2, 1), 0)
+		set_cell(0, Vector2i(borderSize, i), 0, Vector2i(2, 1), 0)
+		set_cell(0, Vector2i( - 1, i), 0, Vector2i(2, 1), 0)
 
 func FixDoorPositions(gridMap: GridMap):
 	for grid in gridMap.get_used_cells():	

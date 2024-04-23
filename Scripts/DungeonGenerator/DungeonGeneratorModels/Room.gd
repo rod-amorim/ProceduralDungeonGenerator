@@ -7,29 +7,45 @@ var roomTileList: Array[RoomTile] = []
 
 var neighbours = [Vector3.FORWARD, Vector3.BACK, Vector3.LEFT, Vector3.RIGHT]
 
-func GetEdgeTiles(gridMap:GridMap):
+func GetTilesThatCanBeDoors(gridMap:GridMap):
 	var edgeTiles : Array[RoomTile] = []
 	for roomTile in roomTileList:
+		var roomTileType = gridMap.get_cell_item(roomTile.pos)
 		for n in neighbours: 
-			var type = gridMap.get_cell_item(roomTile.pos + n)
-			if type == GridMapTileTypeEnum.ROOM_BORDER:
-				if !IsCornerTile(gridMap,roomTile):
+			var sideTile = roomTile.pos + n
+			var type = gridMap.get_cell_item(sideTile)
+			var sideOfSideIsBorder = gridMap.get_cell_item(sideTile + n) == GridMapTileTypeEnum.BORDER_TILE 
+			if type == GridMapTileTypeEnum.ROOM_BORDER and roomTileType != GridMapTileTypeEnum.DOOR_TILE and !IsCornerTile(roomTile) and !sideOfSideIsBorder:
 					edgeTiles.append(roomTile)
+				
+	# for i in edgeTiles:
+	# 	gridMap.set_cell_item(i.pos,3)
 	return edgeTiles
 
 
-func HasDoorInAdjacentRooms(gridMap:GridMap,currentTile:RoomTile):
-	for x in range(-1,2):
-		for y in range(-1,2):
-			if x == 0 and y == 0 :
-				continue
-			var adjacentType = gridMap.get_cell_item(Vector3(x,0,y)+ currentTile.pos) 
-			if adjacentType == GridMapTileTypeEnum.DOOR_TILE:
-				return true
-			
-	return false
+func GetDoorInAdjacentTiles(gridMap:GridMap, currentTile:RoomTile):	
+	for n in neighbours: 
+		var sideTilePos = currentTile.pos + n
+		var sideTileType = gridMap.get_cell_item(sideTilePos)
 
-func IsCornerTile(gridMap:GridMap, tile:RoomTile):
+		if sideTileType == GridMapTileTypeEnum.DOOR_TILE:
+			for tile in roomTileList:
+				if tile.pos == sideTilePos: 
+					return tile
+
+		var sideOfSideTilePos = sideTilePos + n
+		var sideOfSideType = gridMap.get_cell_item(sideOfSideTilePos)
+
+		if sideOfSideType == GridMapTileTypeEnum.DOOR_TILE:
+			for tile in roomTileList:
+				if tile.pos == sideOfSideTilePos: 
+					return tile
+
+	
+			
+	return null
+
+func IsCornerTile( tile:RoomTile):
 	var is_top_left = tile.pos == roomTileList[0].pos
 	#gridMap.set_cell_item(roomTileList[0].pos,3)
 	var is_top_right = tile.pos == roomTileList[0].pos + Vector3(width-1,0,0)
