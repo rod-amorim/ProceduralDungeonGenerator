@@ -61,7 +61,7 @@ func StartMapGeneration():
 	for i in roomNumber:
 		GenerateRooms(maxGenerateRoomOverlapRetryes)
 
-	#generateConnectionsAndHallways()
+	generateConnectionsAndHallways()
 func DrawBorder():
 	for i in range( - 1, borderSize + 1):
 		gridMap.set_cell_item(Vector3i(i, 0, -1), GridMapTileTypeEnum.BORDER_TILE) # back border
