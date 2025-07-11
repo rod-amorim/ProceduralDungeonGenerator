@@ -34,7 +34,7 @@ That's the best way to learn ;)
 
 Generate rooms at random positions and with random predefined sizes within a predefined perimeter (in my case, all parameters are exposed to be changed in the editor).
 
-<img src="/_GithubAssets/ProceduralDungeonGeneratorGodot_GenerateRooms.gif" width="50%" height="50%"/>
+<img src="/_GithubAssets/ProceduralDungeonGeneratorGodot_GenerateRooms.gif"/>
 
 
 In this case:
@@ -64,7 +64,7 @@ This will generate a graph where all rooms are interconnected.
 
 Something like this:
 
-<img src = "/_GithubAssets/Delaunay_triangulation_small.png" width="50%" height="50%"/>
+<img src = "/_GithubAssets/Delaunay_triangulation_small.png"/>
 
 P.S.:
 In the previous step of generating the rooms, I've already precalculated the central point for each room.
@@ -75,7 +75,7 @@ The graph generated in the previous step establishes connections between all roo
 
 For this reason, we apply the Minimum Spanning Tree (MST) algorithm to remove all connections and keep only one between each room, ensuring that all points are accessible in one way or another.
 
-<img src = "/_GithubAssets/Mesh-nodes-localization-in-Delaunay-triangulation-using-MST.png" width="50%" height="50%"/>
+<img src = "/_GithubAssets/Mesh-nodes-localization-in-Delaunay-triangulation-using-MST.png"/>
 PS: The red line is the MST for this graph.
 
 In this case, for each point in the graph, I check its connections and calculate the distance between the current point and each connection. Then, I keep only the connection with the shortest distance.
@@ -96,7 +96,7 @@ P.S.: In this step, I'm removing some tiles from this search, such as the corner
 
 After doing this you will be able to generate something like this:
 
-<img src = "/_GithubAssets/ProceduralDungeonGeneratorGodot_GenerateDoors.gif" width="50%" height="50%"/>
+<img src = "/_GithubAssets/ProceduralDungeonGeneratorGodot_GenerateDoors.gif"/>
 
 ## Sixth step (Pathfinding for the Rescue)
 
@@ -121,7 +121,7 @@ With this configuration, the algorithm will never generate diagonal paths and wi
 
 after doing that you will be able to generate this:
 
-<img src = "/_GithubAssets/ProceduralDungeonGeneratorGodot_GenerateHallways.gif" width="50%" height="50%"/>
+<img src = "/_GithubAssets/ProceduralDungeonGeneratorGodot_GenerateHallways.gif"/>
 
 ## Seventh step (Choosing entry and exit rooms)
 
